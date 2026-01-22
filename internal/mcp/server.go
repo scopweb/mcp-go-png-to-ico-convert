@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/modelcontextprotocol/go-sdk/mcp"
-	"github.com/yourusername/mcp-go-png-convert/internal/converter"
+	"github.com/scopweb/mcp-go-png-to-ico-convert/internal/converter"
 )
 
 // ConvertPNGtoICOArgs define los parámetros de entrada para la herramienta

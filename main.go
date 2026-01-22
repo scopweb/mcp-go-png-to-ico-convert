@@ -6,8 +6,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/yourusername/mcp-go-png-convert/internal/converter"
-	"github.com/yourusername/mcp-go-png-convert/internal/mcp"
+	"github.com/scopweb/mcp-go-png-to-ico-convert/internal/converter"
+	"github.com/scopweb/mcp-go-png-to-ico-convert/internal/mcp"
 )
 
 func main() {

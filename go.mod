@@ -1,4 +1,4 @@
-module github.com/yourusername/mcp-go-png-convert
+module github.com/scopweb/mcp-go-png-to-ico-convert
 
 go 1.24.6
 
