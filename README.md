@@ -1,4 +1,8 @@
-# MCP PNG to ICO Converter
+# 🖼️ MCP PNG to ICO Converter
+
+[![Go Version](https://img.shields.io/badge/Go-1.21+-00ADD8?style=flat&logo=go)](https://go.dev)
+[![MCP](https://img.shields.io/badge/MCP-Compatible-5865F2?style=flat)](https://modelcontextprotocol.io)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Servidor MCP (Model Context Protocol) para convertir archivos PNG a ICO con múltiples resoluciones, optimizado para aplicaciones .NET 10.
 
@@ -7,6 +11,7 @@ Servidor MCP (Model Context Protocol) para convertir archivos PNG a ICO con múl
 - **Conversión de alta calidad**: Utiliza filtro LANCZOS para redimensionamiento de máxima calidad
 - **Múltiples resoluciones**: Genera ICO con 6 resoluciones (256x256, 128x128, 64x64, 48x48, 32x32, 16x16)
 - **Transparencia alfa**: Mantiene transparencia RGBA del PNG original
+- **Doble modo de uso**: CLI directo o servidor MCP para Claude Desktop
 - **Protocolo MCP**: Integración nativa con Claude Desktop y otras herramientas MCP
 - **Sin dependencias CGO**: Compilación pura en Go, sin dependencias de C
 
@@ -22,8 +27,8 @@ Servidor MCP (Model Context Protocol) para convertir archivos PNG a ICO con múl
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/yourusername/mcp-go-png-convert.git
-cd mcp-go-png-convert
+git clone https://github.com/scopweb/mcp-go-png-to-ico-convert.git
+cd mcp-go-png-to-ico-convert
 
 # Instalar dependencias
 go mod download
@@ -103,7 +108,36 @@ GOOS=linux GOARCH=amd64 go build -o dist/mcp-png-convert
 
 ## Uso
 
-### Desde Claude Desktop
+La herramienta soporta **dos modos de operación**:
+
+### Modo 1: CLI Directo (sin IA)
+
+Úsalo directamente desde la línea de comandos para conversiones rápidas:
+
+```bash
+# Con input y output explícitos
+./mcp-png-convert app.png app.ico
+
+# Solo input (genera automáticamente app.ico)
+./mcp-png-convert app.png
+
+# En Windows
+.\mcp-png-convert.exe logo.png logo.ico
+
+# O con go run (en desarrollo)
+go run main.go app.png app.ico
+```
+
+**Salida de ejemplo:**
+```
+🔄 Convirtiendo: app.png -> app.ico
+✅ ICO generado exitosamente
+📦 Archivo: app.ico
+📐 Resoluciones: [256x256 128x128 64x64 48x48 32x32 16x16]
+💾 Tamaño: 24.5 KB
+```
+
+### Modo 2: Servidor MCP con Claude Desktop
 
 Una vez configurado, puedes usar el servidor directamente desde Claude Desktop:
 
@@ -177,17 +211,19 @@ La herramienta retorna un JSON con el resultado:
 ### Estructura del proyecto
 
 ```
-mcp-go-png-convert/
-├── main.go                  # Punto de entrada
+mcp-go-png-to-ico-convert/
+├── main.go                  # Punto de entrada (modo híbrido CLI/MCP)
 ├── internal/
 │   ├── converter/
 │   │   └── converter.go     # Lógica de conversión PNG->ICO
 │   └── mcp/
 │       └── server.go        # Servidor MCP
-├── dist/                    # Binarios compilados
+├── dist/                    # Binarios compilados (gitignored)
 ├── go.mod
 ├── go.sum
+├── .gitignore
 ├── CLAUDE.md               # Especificaciones del proyecto
+├── CHANGELOG.md            # Historial de cambios
 └── README.md
 ```
 
@@ -230,7 +266,7 @@ Para probar el servidor manualmente:
 
 MIT License
 
-Copyright (c) 2026 [Your Name]
+Copyright (c) 2026 scopweb
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
