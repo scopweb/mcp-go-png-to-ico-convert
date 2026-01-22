@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(go mod init:*)",
+      "Bash(go get:*)",
+      "WebSearch",
+      "Bash(go mod tidy:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(go build:*)",
+      "Bash(go run:*)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
